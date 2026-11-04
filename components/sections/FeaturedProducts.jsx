@@ -1,0 +1,72 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+import ProductCard from "../cards/ProductCard";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { useGetFeaturedProducts } from "@/hooks/useProducts";
+
+export default function FeaturedProducts() {
+  const { t } = useTranslation();
+  const { data, isPending, isError } = useGetFeaturedProducts();
+  const products = data?.products || [];
+
+  if (isPending) {
+    return (
+      <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="rounded-xl bg-gray-100/70 dark:bg-zinc-900/50 p-5 sm:p-6 animate-pulse"
+          >
+            <div className="aspect-square mb-4 bg-gray-200 dark:bg-zinc-800 rounded-md" />
+            <div className="h-3 w-16 bg-gray-200 dark:bg-zinc-800 rounded mb-2" />
+            <div className="h-4 w-32 bg-gray-200 dark:bg-zinc-800 rounded mb-2" />
+            <div className="h-4 w-20 bg-gray-200 dark:bg-zinc-800 rounded" />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <p className="text-sm text-red-600 dark:text-red-400">
+        {t("featuredProducts.error")}
+      </p>
+    );
+  }
+
+  if (!isPending && !isError && products?.length === 0) {
+    return (
+      <p className="text-sm text-gray-500 dark:text-zinc-400">
+        {t("featuredProducts.empty")}
+      </p>
+    );
+  }
+
+  return (
+    <section className="py-2 sm:py-6">
+      <div className="flex items-center justify-between mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-zinc-100 tracking-tight">
+          {t("featuredProducts.title")}
+        </h2>
+        <Link
+          href="/featured-products"
+          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-blue-950 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+        >
+          {t("bestsellers.viewAll")}
+          <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+        </Link>
+      </div>
+
+      {!isPending && !isError && products?.length > 0 && (
+        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+          {products.slice(0, 3).map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
