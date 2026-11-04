@@ -1,4 +1,3 @@
-import axios from "axios";
 import { api } from "./client";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;

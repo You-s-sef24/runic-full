@@ -164,8 +164,6 @@ export default function CheckoutPage() {
     };
 
     try {
-      console.log(orderPayload);
-
       await createOrder(orderPayload);
       clearCart();
     } catch (err) {
