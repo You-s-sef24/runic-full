@@ -25,7 +25,6 @@ export function useCreateOrder() {
     },
 
     onError: (error) => {
-      console.error("Order error:", error.response?.data);
       toast.error(error?.message || "Error creating order");
     },
   });

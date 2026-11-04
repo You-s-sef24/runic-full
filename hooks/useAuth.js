@@ -38,7 +38,6 @@ export function useRegister(user) {
       router.push("/");
     },
     onError: (error) => {
-      console.log(error);
       toast.error(error.response?.data?.message || "Registration Failed");
     },
   });
