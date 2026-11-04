@@ -18,6 +18,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
+import "@/i18n";
 import { useTranslation } from "react-i18next";
 import { useLogout } from "@/hooks/useAuth";
 

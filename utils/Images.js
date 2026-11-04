@@ -23,3 +23,10 @@ export function getCategoryThumbnail(category) {
     "/placeholder.png"
   );
 }
+
+export function getOrderItemThumbnail(image) {
+  return (
+    `${process.env.NEXT_PUBLIC_BASE_URL}/uploads/${image}` ||
+    "/placeholder.png"
+  );
+}

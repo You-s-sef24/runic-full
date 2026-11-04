@@ -1,11 +1,11 @@
 import { CheckCircle2, Clock, Hammer } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getProductThumbnail } from "@/utils/Images";
 import { t } from "i18next";
 import { useLanguageStore } from "@/store/langStore";
 import { calculateOrderTotal } from "@/lib/calculateOrderTotal";
 import { Button } from "../ui/button";
+import { getOrderItemThumbnail } from "@/utils/Images";
 
 const STATUS_CONFIG = {
   pending: {
@@ -79,6 +79,7 @@ export default function OrderCard({ order }) {
                   ? item.name?.en
                   : item.name?.ar
                 : item.name;
+            const thumbnail = getOrderItemThumbnail(item?.image);
 
             return (
               <div
@@ -87,7 +88,7 @@ export default function OrderCard({ order }) {
               >
                 <div className="relative w-16 h-20 rounded bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-100 dark:border-zinc-800 flex-shrink-0 overflow-hidden">
                   <Image
-                    src={getProductThumbnail(item?.images || "")}
+                    src={thumbnail}
                     alt={itemName || "Product"}
                     fill
                     unoptimized
