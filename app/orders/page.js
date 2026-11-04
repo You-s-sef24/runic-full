@@ -14,7 +14,6 @@ export default function OrdersPage() {
   const user = useAuthStore((state) => state.user);
   const { data, isLoading, isError } = useGetUserOrders(user?._id);
   const orders = data?.orders || [];
-  console.log(orders);
 
   return (
     <ProtectedRoutes>
