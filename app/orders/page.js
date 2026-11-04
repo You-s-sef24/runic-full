@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/authStore";
 import ProtectedRoutes from "@/components/routes/ProtectedRoutes";
 import { useGetUserOrders } from "@/hooks/useOrders";
-import OrderCard from "@/components/OrderCard";
+import OrderCard from "@/components/cards/OrderCard";
 
 export default function OrdersPage() {
   const { t } = useTranslation();

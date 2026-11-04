@@ -1,11 +1,11 @@
 import { CheckCircle2, Clock, Hammer } from "lucide-react";
-import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { getProductThumbnail } from "@/utils/Images";
 import { t } from "i18next";
 import { useLanguageStore } from "@/store/langStore";
 import { calculateOrderTotal } from "@/lib/calculateOrderTotal";
+import { Button } from "../ui/button";
 
 const STATUS_CONFIG = {
   pending: {

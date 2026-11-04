@@ -1,4 +1,4 @@
-import BestsellerSection from "@/components/BestSellerSection";
+import BestsellerSection from "@/components/sections/BestSellerSection";
 import CategorySection from "@/components/sections/CategoriesSection";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import HeroSection from "@/components/sections/HeroSection";

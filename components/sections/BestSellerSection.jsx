@@ -1,10 +1,10 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import ProductCard from "./cards/ProductCard";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useGetBestSellingProducts } from "@/hooks/useProducts";
+import ProductCard from "../cards/ProductCard";
 
 export default function BestsellerSection() {
   const { t } = useTranslation();
